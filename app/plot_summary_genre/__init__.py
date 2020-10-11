@@ -1,1 +1,1 @@
-from utils import get_genre
+from .utils import get_genre
