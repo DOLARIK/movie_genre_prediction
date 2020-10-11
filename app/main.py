@@ -1,5 +1,5 @@
 from flask import Flask, request, jsonify
-from utils import (get_genre)
+from plot_summary_genre import (get_genre)
 
 app = Flask(__name__)
 
