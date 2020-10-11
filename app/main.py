@@ -1,11 +1,12 @@
-from flask import Flask, request
-from utils import ()
+from flask import Flask, request, jsonify
+from utils import (get_genre)
 
 app = Flask(__name__)
 
 @app.route("/predict_genre", methods = ['POST'])
 def predict_genre():
-    return "<h1 style='color:blue'>Hello There!</h1>"
+	genres_dict = get_genre(request.get_json())
+	return jsonify(genres_dict)
 
 if __name__ == "__main__":
-    app.run(host='0.0.0.0')
+    app.run(host='0.0.0.0', port=5000)
