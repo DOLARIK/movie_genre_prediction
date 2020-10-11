@@ -14,5 +14,5 @@ def tokenize_plots(list_of_plots
 					 )
 
 
-def genre_from_indices(index, indices_genre_mapping):
-	pass
+def genre_from_indices(indices, indices_genre_mapping):
+	return [indices_genre_mapping[index] for index in indices]
