@@ -1,16 +1,24 @@
 import json
 import requests
+import numpy as np
 from transformers import BertTokenizer
 from cmu_movie_dataset.plot_summary_genre.utils import clean_plot_summary
 
 API_URI = 'http://localhost:8501/v1/models/bert:predict'
+INDICES_GENRE_MAPPING = load_genre_indices_mapping('./config/bert/2/indices_genre.json')
+TOKENIZER = BertTokenizer.from_pretrained('bert-base-uncased')
+
+def load_genre_indices_mapping(path_to_mapping):
+	with open(path_to_mapping) as f:
+	  mapping = json.load(f)
+	return mapping
 
 def tokenize_plots(list_of_plots,
 				   max_length = 200,
 				   padding = 'max_length',
 				   truncation = True,
 				   return_tensors = 'tf'):
-	tokenizer = BertTokenizer.from_pretrained('bert-base-uncased')
+	tokenizer = TOKENIZER
 	return tokenizer(list_of_plots, 
 					 max_length = max_length, 
 					 padding = padding,
@@ -18,17 +26,13 @@ def tokenize_plots(list_of_plots,
 					 return_tensors = return_tensors, 
 					 )
 
-
-def genre_from_indices(indices, indices_genre_mapping):
-	return [indices_genre_mapping[index] for index in indices]
-
-def pre_process_plot_summaries(plots,   
+def pre_process_plot_summaries(plot,   
 					  max_length = 200,
 				      padding = 'max_length',
 				      truncation = True,
 				      return_tensors = 'tf'):
 
-    cleaned_plot_summaries = [clean_plot_summary(plot) for plot in plots]
+    cleaned_plot_summaries = [clean_plot_summary(plot)]
     tokenized_plots = tokenize_plots(cleaned_plot_summaries, 
     	                             max_length=max_length,
     	                             padding=padding,
@@ -54,6 +58,29 @@ def make_api_call(pre_processed_plot_summaries):
 	json_response = requests.post(API_URI, data=data, headers=headers)
 
 	return json.loads(json_response.text)
+
+def post_process_api_predictions(prediction_dict,
+								 threshold = 0.5):
+	outputs = prediction_dict['outputs']
+	outputs_boolean = np.asarray(outputs) > threshold
+
+	indices_genre = INDICES_GENRE_MAPPING
+
+	genres_list = []
+
+	for output_id in range(len(output)):
+		generes = [indices_genre[i] for i, x in enumerate(outputs[index]) if x]
+		genres_list.append(genres)
+
+	return genres_list
+
+
+
+
+
+
+
+
 
 
 	
