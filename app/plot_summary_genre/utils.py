@@ -6,6 +6,7 @@ from transformers import BertTokenizer
 from cmu_movie_dataset.plot_summary_genre.utils import clean_plot_summary
 
 INDICES_GENRE_MAPPING = load_genre_indices_mapping(INDICES_GENRE_MAPPING_LOCATION)
+TOKENIZER = BertTokenizer.from_pretrained('bert-base-uncased')
 
 def load_genre_indices_mapping(path_to_mapping):
 	with open(path_to_mapping) as f:
