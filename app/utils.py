@@ -8,6 +8,10 @@ API_URI = 'http://localhost:8501/v1/models/bert:predict'
 INDICES_GENRE_MAPPING = load_genre_indices_mapping('./config/bert/2/indices_genre.json')
 TOKENIZER = BertTokenizer.from_pretrained('bert-base-uncased')
 
+MAX_LENGTH = 200
+PADDING = 'max_length'
+TRUNCATION = True
+
 def load_genre_indices_mapping(path_to_mapping):
 	with open(path_to_mapping) as f:
 	  mapping = json.load(f)
@@ -52,7 +56,8 @@ def pre_process_plot_summaries(plot,
 	return pre_processed_plot_summaries
 
 def make_api_call(pre_processed_plot_summaries):
-	data = json.dumps({"signature_name": "serving_default", "inputs": data_})
+	data = json.dumps({"signature_name": "serving_default", 
+					   "inputs": pre_processed_plot_summaries})
 
 	headers = {"content-type": "application/json"}
 	json_response = requests.post(API_URI, data=data, headers=headers)
@@ -72,7 +77,26 @@ def post_process_api_predictions(prediction_dict,
 		generes = [indices_genre[i] for i, x in enumerate(outputs[index]) if x]
 		genres_list.append(genres)
 
-	return genres_list
+	genres_dict = {
+			'genres': genres_list
+	}
+
+	return genres_dict
+
+def get_genre(plot_dict):
+	plot_summary = plot_dict['plot_summary']
+	pre_processed_plot_summary = pre_process_plot_summaries(plot_summary,
+													max_length = MAX_LENGTH,
+													padding = PADDING,
+													truncation = TRUNCATION,
+													return_tensors = RETURN_TENSORS)
+	
+	prediction_dict = make_api_call(pre_processed_plot_summary)
+	genres_dict = post_process_api_predictions(prediction_dict)
+
+	return genres_dict
+
+
 
 
 
