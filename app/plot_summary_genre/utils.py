@@ -1,16 +1,11 @@
 import json
 import requests
 import numpy as np
+from config import *
 from transformers import BertTokenizer
 from cmu_movie_dataset.plot_summary_genre.utils import clean_plot_summary
 
-API_URI = 'http://localhost:8501/v1/models/bert:predict'
-INDICES_GENRE_MAPPING = load_genre_indices_mapping('./config/bert/2/indices_genre.json')
-TOKENIZER = BertTokenizer.from_pretrained('bert-base-uncased')
-
-MAX_LENGTH = 200
-PADDING = 'max_length'
-TRUNCATION = True
+INDICES_GENRE_MAPPING = load_genre_indices_mapping(INDICES_GENRE_MAPPING_LOCATION)
 
 def load_genre_indices_mapping(path_to_mapping):
 	with open(path_to_mapping) as f:
