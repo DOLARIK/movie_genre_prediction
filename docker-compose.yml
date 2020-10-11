@@ -1,0 +1,28 @@
+version: '3'
+
+services:
+  app:
+    build: ./app
+    container_name: app
+    depends_on:
+      - plot_summary_genre_api
+    environment:
+      - API_URI=http://plot_summary_genre_api:8501/v1/models/bert:predict
+      - PYTHONUNBUFFERED=1
+    ports:
+      - "5000:5000"
+    restart: always
+    volumes:
+      - "./app:/app"
+
+  plot_summary_genre_api:
+    container_name: plot_summary_genre_api
+    environment:
+      - MODEL_NAME=bert
+    image: tensorflow/serving
+    ports:
+      - "8501:8501"
+    restart: always
+    volumes:
+      - "./plot_summary_genre_api/models/bert:/models/bert"
+
