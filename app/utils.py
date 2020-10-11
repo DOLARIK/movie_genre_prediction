@@ -1,5 +1,9 @@
+import json
+import requests
 from transformers import BertTokenizer
 from cmu_movie_dataset.plot_summary_genre.utils import clean_plot_summary
+
+API_URI = 'http://localhost:8501/v1/models/bert:predict'
 
 def tokenize_plots(list_of_plots,
 				   max_length = 200,
@@ -42,3 +46,15 @@ def pre_process_plot_summaries(plots,
     }
 
 	return pre_processed_plot_summaries
+
+def make_api_call(pre_processed_plot_summaries):
+	data = json.dumps({"signature_name": "serving_default", "inputs": data_})
+
+	headers = {"content-type": "application/json"}
+	json_response = requests.post(API_URI, data=data, headers=headers)
+
+	return json.loads(json_response.text)
+
+
+	
+
