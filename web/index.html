@@ -4,11 +4,11 @@
 <head>
   <meta charset="UTF-8">
   <title>Capstone Project</title>
-  <link href='https://fonts.googleapis.com/css?family=Pacifico' rel='stylesheet' type='text/css'>
+  <!-- <link href='https://fonts.googleapis.com/css?family=Pacifico' rel='stylesheet' type='text/css'>
 <link href='https://fonts.googleapis.com/css?family=Arimo' rel='stylesheet' type='text/css'>
 <link href='https://fonts.googleapis.com/css?family=Hind:300' rel='stylesheet' type='text/css'>
 <link href='https://fonts.googleapis.com/css?family=Open+Sans+Condensed:300' rel='stylesheet' type='text/css'>
-<link rel="stylesheet" href="/static/css/style.css">
+<link rel="stylesheet" href="/static/css/style.css"> -->
   
 </head>
 
@@ -17,8 +17,9 @@
 	<h1>Multi Label Movie Genre Prediction</h1>
 
      <!-- Main Input For Receiving Query to our ML -->
-    <form action="http://app:5000/test" method="post" enctype="application/json">
-    	<input type="text" name="plot_summary" placeholder="Plot Summary" required="required" />
+    <form action="http://localhost:5000/test" method="post" enctype="application/json">
+      <textarea rows = "5" cols = "60" name = "plot_summary" placeholder="Plot Summary" required="required"></textarea><br>
+    	<!-- <input type="text" name="plot_summary" placeholder="Plot Summary" required="required" /> -->
         <button type="submit" class="btn btn-primary btn-block btn-large">Predict</button>
     </form>
 
