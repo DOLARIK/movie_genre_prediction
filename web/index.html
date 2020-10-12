@@ -17,7 +17,7 @@
 	<h1>Multi Label Movie Genre Prediction</h1>
 
      <!-- Main Input For Receiving Query to our ML -->
-    <form action="http://localhost:5000/test" method="post" enctype="application/json">
+    <form action="http://localhost:5000/predict_genre" method="post" enctype="application/json">
       <textarea rows = "5" cols = "60" name = "plot_summary" placeholder="Plot Summary" required="required"></textarea><br>
     	<!-- <input type="text" name="plot_summary" placeholder="Plot Summary" required="required" /> -->
         <button type="submit" class="btn btn-primary btn-block btn-large">Predict</button>
