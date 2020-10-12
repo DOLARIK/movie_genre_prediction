@@ -3,8 +3,8 @@ from plot_summary_genre import (get_genre)
 
 app = Flask(__name__)
 
-@app.route("/get_genre", methods = ['POST'])
-def get_genre():
+@app.route("/genre", methods = ['POST'])
+def genre():
 	genres_dict = get_genre(request.get_json())
 	return jsonify(genres_dict)
 
