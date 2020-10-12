@@ -4,6 +4,7 @@ Predict movie genres given the movie plot summary.
 
 ## Usage:
 
+### Step 1:
 ```bash
 docker-compose build
 docker-compose up
@@ -23,6 +24,15 @@ plot_summary_genre_api
 
 
 [Download the fine-tuned bert model.](https://drive.google.com/drive/folders/1-2_0idKxFHTLDxLV0GsRLGMGBCvjQ2eC?usp=sharing)
+
+### Step 2:
+
+Go to the [webpage](http://localhost:8080/) at http://localhost:8080/ 
+
+__Sample Movie Plot:__
+
+> This movie is based on a story of two lovers who meet on a segway. However, the world is not happy with them being together. So, the world keeps on making strategies to keep them from coming together. Even after these obstacles, they manage to elope and live a happy life together.
+
 
 ## Services:
 
