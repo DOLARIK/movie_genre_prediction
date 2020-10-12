@@ -8,5 +8,11 @@ def predict_genre():
 	genres_dict = get_genre(request.get_json())
 	return jsonify(genres_dict)
 
+@app.route("/test", methods = ['POST'])
+def test():
+	print(request.form['plot_summary'])
+	# genres_dict = get_genre(request.get_json())
+	# return jsonify(genres_dict)
+
 if __name__ == "__main__":
     app.run(host='0.0.0.0', port=5000,)
