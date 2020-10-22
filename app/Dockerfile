@@ -8,6 +8,8 @@ COPY requirements.txt requirements.txt
 RUN pip install -r requirements.txt &&\
 	pip install gunicorn
 
+RUN pip install flask-cors
+
 COPY plot_summary_genre ./plot_summary_genre
 COPY main.py main.py
 # COPY boot.sh ./

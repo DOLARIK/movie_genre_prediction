@@ -1,11 +1,22 @@
 from flask import Flask, request, jsonify
+from flask_cors import CORS, cross_origin
 from plot_summary_genre import (get_genre)
 
 app = Flask(__name__)
 
 @app.route("/genre", methods = ['POST'])
+@cross_origin()
 def genre():
-	genres_dict = get_genre(request.get_json())
+
+	print(request.get_json(force=True), '\n\n\n')
+
+	# print(request.data())
+
+	print(request)
+
+
+	genres_dict = get_genre(request.get_json(force=True))
+	print('\n\n\n', genres_dict)
 	return jsonify(genres_dict)
 
 @app.route("/predict_genre", methods = ['POST'])
