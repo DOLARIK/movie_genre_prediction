@@ -1,3 +1,11 @@
+textarea = document.querySelector("#plotSummary");
+textarea.addEventListener('input', autoResize, false);
+
+function autoResize() {
+    this.style.height = 'auto';
+    this.style.height = this.scrollHeight + 'px';
+}
+
 async function predictFunction() {
 
 	var plotSummary = document.getElementById('plotSummary').value
@@ -21,9 +29,9 @@ async function predictFunction() {
 	var genreResults = ""
 
 	for (var genre of response['genres']){
-			genreResults = genreResults + `<li>${genre}</li>`
+			genreResults = genreResults + `<li class="list-group-item">${genre}</li>`
 		}
-	results.innerHTML = genreResults
+	results.innerHTML = '<ul class="list-group list-group-horizontal">' + genreResults + '</ul>'
 }
 
 const predict = document.getElementById('predict');
