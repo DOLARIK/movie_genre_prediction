@@ -1,34 +1,42 @@
 <!DOCTYPE html>
 <html >
 <!--From https://codepen.io/frytyler/pen/EGdtg-->
-<head>
-  <meta charset="UTF-8">
-  <title>Capstone Project</title>
-  <!-- <link href='https://fonts.googleapis.com/css?family=Pacifico' rel='stylesheet' type='text/css'>
-<link href='https://fonts.googleapis.com/css?family=Arimo' rel='stylesheet' type='text/css'>
-<link href='https://fonts.googleapis.com/css?family=Hind:300' rel='stylesheet' type='text/css'>
-<link href='https://fonts.googleapis.com/css?family=Open+Sans+Condensed:300' rel='stylesheet' type='text/css'>
-<link rel="stylesheet" href="/static/css/style.css"> -->
-  
-</head>
+  <head>
+    <meta charset="UTF-8">
+    <title>Capstone Project</title>    
+  </head>
 
-<body>
- <div class="login">
-	<h1>Multi Label Movie Genre Prediction</h1>
+  <body>
+    <div class="login">
+      <h1>Multi Label Movie Genre Prediction</h1>
+    </div>
 
-     <!-- Main Input For Receiving Query to our ML -->
-    <form action="http://localhost:5000/predict_genre" method="post" enctype="application/json">
-      <textarea rows = "5" cols = "60" name = "plot_summary" placeholder="Plot Summary" required="required"></textarea><br>
-    	<!-- <input type="text" name="plot_summary" placeholder="Plot Summary" required="required" /> -->
-        <button type="submit" class="btn btn-primary btn-block btn-large">Predict</button>
-    </form>
+   
+    <!-- Main Input For Receiving Query to our ML -->
+    <!-- <form action="http://localhost:5000/predict_genre" method="post" id="form" enctype="application/json"> -->
+      
+      <!-- Plot Summary input goes in this textarea -->
+      <textarea rows = "5" cols = "60" name = "plot_summary" id = "plotSummary" placeholder="Plot Summary" required="required"></textarea> <br />
 
-   <br>
-   <br>
+      <!-- Predict Button -->
+      <button  id="predict" class="btn btn-primary btn-block btn-large">Predict</button>
+
+    <!-- </form> -->
+
+    <br />
+    <br />
+    <br />
+
+    <!-- Genres -->
+    <section id="genres">
+
+
+    </section>
    
 
- </div>
 
+  </body>
 
-</body>
+  <script src="scripts/main.js"></script>
+
 </html>
