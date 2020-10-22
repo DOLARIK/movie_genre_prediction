@@ -6,8 +6,9 @@ async function predictFunction() {
 		'plot_summary': plotSummary
 	}
 	
-	const response = await fetch('http://localhost:5000/genre', {
+	const response = await fetch('http://192.168.1.12:5000/genre', {
 		method: 'POST',
+		mode: 'cors',
 	    headers: {
 	    	"Content-Type": "application/json"
 	    }, 
@@ -17,7 +18,12 @@ async function predictFunction() {
 
 	var results = document.getElementById('genres')
 
-	results.innerHTML = response['genres']
+	var genreResults = ""
+
+	for (var genre of response['genres']){
+			genreResults = genreResults + `<li>${genre}</li>`
+		}
+	results.innerHTML = genreResults
 }
 
 const predict = document.getElementById('predict');
