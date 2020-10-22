@@ -4,20 +4,15 @@ from plot_summary_genre import (get_genre)
 
 app = Flask(__name__)
 
+CORS(app, supports_credentials=True)
+
 @app.route("/genre", methods = ['POST'])
-@cross_origin()
+# @cross_origin(supports_credentials=True)
 def genre():
-
-	print(request.get_json(force=True), '\n\n\n')
-
-	# print(request.data())
-
-	print(request)
-
-
 	genres_dict = get_genre(request.get_json(force=True))
-	print('\n\n\n', genres_dict)
-	return jsonify(genres_dict)
+	response = jsonify(genres_dict)
+	return response
+		
 
 @app.route("/predict_genre", methods = ['POST'])
 def predict_genre():
