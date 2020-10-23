@@ -26,11 +26,19 @@ async function predictFunction() {
 
 	var results = document.getElementById('genres')
 
-	var genreResults = ""
+	// list-group-item-dark
+	var genreResults = `<li class="list-group-item list-group-item-primary">Genres</li>`
 
-	for (var genre of response['genres']){
-			genreResults = genreResults + `<li class="list-group-item">${genre}</li>`
-		}
+	if (response['genres'].length > 0){
+	
+		for (var genre of response['genres']){
+				genreResults = genreResults + `<li class="list-group-item">${genre}</li>`
+			}
+	}
+	else{
+		genreResults = genreResults + `<li class="list-group-item">None</li>`
+	}
+
 	results.innerHTML = '<ul class="list-group list-group-horizontal">' + genreResults + '</ul>'
 }
 
