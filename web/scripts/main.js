@@ -39,7 +39,7 @@ async function predictFunction() {
 		genreResults = genreResults + `<li class="list-group-item">None</li>`
 	}
 
-	results.innerHTML = '<ul class="list-group list-group-horizontal">' + genreResults + '</ul>'
+	results.innerHTML = '<ul class="list-group list-group-horizontal-xl">' + genreResults + '</ul>'
 }
 
 const predict = document.getElementById('predict');

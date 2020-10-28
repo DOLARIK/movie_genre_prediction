@@ -29,3 +29,21 @@
 #genres {
 	size:1.5vw;
 }
+
+@media screen and (min-width: 768px) {
+	#h1 {
+		font-size: 32px;
+	}
+
+	#plotSummary {
+		font-size: 18px;
+	}
+
+	#predict {
+		font-size: 18px;
+	}
+
+	#genres {
+		font-size: 18px;
+	}
+}
