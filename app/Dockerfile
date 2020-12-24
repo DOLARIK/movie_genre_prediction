@@ -5,10 +5,7 @@ ENV API_URI http://plot_summary_genre_api:8501/v1/models/bert:predict
 WORKDIR /app
 
 COPY requirements.txt requirements.txt
-RUN pip install -r requirements.txt &&\
-	pip install gunicorn
-
-RUN pip install flask-cors
+RUN pip install -r requirements.txt
 
 COPY plot_summary_genre ./plot_summary_genre
 COPY main.py main.py
