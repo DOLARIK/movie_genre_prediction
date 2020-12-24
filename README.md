@@ -10,7 +10,7 @@ docker-compose build
 docker-compose up
 ```
 > __WARNING__: Before executing the above commands, make sure that in __`plot_summary_genre_api`__ directory, there is a model inside __`models`__ directory. __For example:__
-> ```
+ ```
 plot_summary_genre_api
 |-- README.md
 `-- models
