@@ -1,6 +1,6 @@
-# Capstone Project (Multi-Label Movie Genre Classification)
+# Multi-Label Movie Genre Classification
 
-Predict movie genres given the movie plot summary.
+Predict genre names by looking at the summary of the movie.
 
 ## Usage:
 
