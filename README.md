@@ -21,7 +21,7 @@ plot_summary_genre_api
             `-- variables
                 |-- variables.data-00000-of-00001
                 `-- variables.index
-
+```
 
 [Download the fine-tuned bert model.](https://drive.google.com/drive/folders/1-2_0idKxFHTLDxLV0GsRLGMGBCvjQ2eC?usp=sharing)
 
