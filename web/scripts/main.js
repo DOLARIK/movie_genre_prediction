@@ -14,7 +14,7 @@ async function predictFunction() {
 		'plot_summary': plotSummary
 	}
 	
-	const response = await fetch('http://192.168.1.12:5000/genre', {
+	const response = await fetch('http://localhost:5000/genre', {
 		method: 'POST',
 		mode: 'cors',
 	    headers: {
